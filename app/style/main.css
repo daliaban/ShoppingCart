@@ -1,0 +1,103 @@
+html, body {
+    height: 100%;
+}
+
+.maincontainer {
+    position: relative;
+    min-height: 100%;
+}
+.header {
+    background-color:#880000;
+    color: white;
+    text-align: center;
+    padding-top: 2px;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.body {
+    padding-bottom:60px;   /* Height of the footer */
+}
+
+.footer {
+    background-color: #0d3349;
+    color: whitesmoke;
+    bottom: 0;
+    width: 100%;
+    position:absolute;
+    text-align: right;
+    font-size: 12px;
+}
+
+.footercontainer {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.footercontainer a {
+    color: whitesmoke;
+}
+
+.totalwidget {
+    border: solid;
+    text-align: center;
+}
+
+.totalwidget button {
+    margin-bottom: 10px;
+}
+
+th {
+    color: #337ab7;
+}
+
+input.quantity {
+    width: 30px;
+}
+
+#emptycart {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#detailsSec {
+    padding-right: 150px;
+    padding-left: 150px;
+}
+
+#postcode {
+    width: 100px;
+}
+
+#postcodeS {
+    width: 100px;
+}
+
+.error {
+    color: red;
+}
+
+#payment {
+    padding-top: 50px;
+    padding-left: 100px;
+}
+
+.pagination {
+    display: inline-block;
+    float: right;
+    margin: 0;
+}
+.pagination-control li {
+    display: inline-block;
+}
+
+.pagination-control button{
+    margin-top: -26px;
+}
+
+#feedbackForm {
+    margin-right: 30px;
+    margin-left: 10px;
+}

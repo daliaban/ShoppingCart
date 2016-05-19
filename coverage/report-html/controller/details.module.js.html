@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for controller/userdetails.module.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">controller/</a> userdetails.module.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">6.35% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>4/63</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/32</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/13</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">6.35% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>4/63</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * Created by dalia on 03/05/16.
+ */
+'use strict';
+&nbsp;
+angular.module('shoppingCart')
+    .controller('detailsCtrl',<span class="fstat-no" title="function not covered" >function($scope, $stateParams, $uibModal, postCodeLookup, userManagement, stateManagement){</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if ($stateParams.referer != 'default'){</span>
+<span class="cstat-no" title="statement not covered" >            var params = {'referer': $stateParams.referer};</span>
+<span class="cstat-no" title="statement not covered" >            stateManagement.setStateParams($stateParams.referer);</span>
+        }
+<span class="cstat-no" title="statement not covered" >        var referer = stateManagement.getStateParams('stateParams');</span>
+<span class="cstat-no" title="statement not covered" >        if (referer){</span>
+<span class="cstat-no" title="statement not covered" >            $scope.referer = referer;</span>
+        }else {
+<span class="cstat-no" title="statement not covered" >            $scope.referer = 'cart';</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var user = userManagement.getUser();</span>
+<span class="cstat-no" title="statement not covered" >        if (user){</span>
+<span class="cstat-no" title="statement not covered" >            $scope.email = user.email;</span>
+<span class="cstat-no" title="statement not covered" >            $scope.billingAddr = user.billingAddr;</span>
+<span class="cstat-no" title="statement not covered" >            $scope.shippingAddr = user.shippingAddr;</span>
+        }else {
+<span class="cstat-no" title="statement not covered" >            $scope.billingAddr = {</span>
+                name: '',
+                phno: '',
+                house: '',
+                postcode: ''
+            };
+<span class="cstat-no" title="statement not covered" >            $scope.shippingAddr = {</span>
+                name: '',
+                phno: '',
+                house: '',
+                postcode: ''
+            };
+        }
+<span class="cstat-no" title="statement not covered" >        $scope.same = false;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $scope.sameAddress = <span class="fstat-no" title="function not covered" >function(same){</span></span>
+<span class="cstat-no" title="statement not covered" >            $scope.same = !same;</span>
+<span class="cstat-no" title="statement not covered" >            if ($scope.same){</span>
+<span class="cstat-no" title="statement not covered" >                $scope.shippingAddr = $scope.billingAddr;</span>
+            }else {
+<span class="cstat-no" title="statement not covered" >                $scope.shippingAddr = {};</span>
+            }
+        };
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function defaultIt(AddrDict){</span>
+<span class="cstat-no" title="statement not covered" >            angular.forEach(AddrDict, <span class="fstat-no" title="function not covered" >function(value, key){</span></span>
+<span class="cstat-no" title="statement not covered" >               if (key != 'house'  &amp;&amp; key != 'postcode' &amp;&amp; key != 'name' &amp;&amp; key != 'phno'){</span>
+<span class="cstat-no" title="statement not covered" >                   AddrDict[key] = '';</span>
+               }
+            });
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function splitAddress(address, addType){</span>
+<span class="cstat-no" title="statement not covered" >            angular.forEach(address.address_components, <span class="fstat-no" title="function not covered" >function(value, key) {</span></span>
+<span class="cstat-no" title="statement not covered" >                if (value.types[0] == 'route'){</span>
+<span class="cstat-no" title="statement not covered" >                    addType.street = value.long_name;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (value.types[0] == 'locality'){</span>
+<span class="cstat-no" title="statement not covered" >                    addType.city = value.long_name;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (value.types[0] == 'postal_town'){</span>
+<span class="cstat-no" title="statement not covered" >                    addType.city = value.long_name;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (value.types[0] == 'country'){</span>
+<span class="cstat-no" title="statement not covered" >                    addType.country = value.long_name;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (value.types[0] == 'administrative_area_level_1'){</span>
+<span class="cstat-no" title="statement not covered" >                    addType.state = value.long_name;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                if (value.types[0] == 'administrative_area_level_2'){</span>
+<span class="cstat-no" title="statement not covered" >                    addType.county = value.long_name;</span>
+                }
+            });
+<span class="cstat-no" title="statement not covered" >            addType.fullAddr = address.formatted_address;</span>
+        }
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function getAddress(postcode, addrType){</span>
+<span class="cstat-no" title="statement not covered" >            var promise = postCodeLookup.lookUpAddress(postcode);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            promise.then(<span class="fstat-no" title="function not covered" >function(response){</span></span>
+<span class="cstat-no" title="statement not covered" >                var addresses = response.data.results;</span>
+<span class="cstat-no" title="statement not covered" >                if (addresses.length == 1){</span>
+<span class="cstat-no" title="statement not covered" >                    splitAddress(addresses[0], addrType);</span>
+                }else {
+<span class="cstat-no" title="statement not covered" >                    var modalInstance = $uibModal.open({</span>
+                        animation:true,
+                        templateUrl: '../view/pick-address.html',
+                        controller: 'ModalInstanceCtrl',
+                        resolve: {
+                            items: <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >                                return addresses</span>
+                            }
+                        }
+                    });
+<span class="cstat-no" title="statement not covered" >                    modalInstance.result.then(<span class="fstat-no" title="function not covered" >function (selectedItem){</span></span>
+<span class="cstat-no" title="statement not covered" >                        splitAddress(selectedItem, addrType);</span>
+                    });
+                }
+            });
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $scope.getBillingAddr = <span class="fstat-no" title="function not covered" >function(postcode) {</span></span>
+<span class="cstat-no" title="statement not covered" >            defaultIt($scope.billingAddr);</span>
+<span class="cstat-no" title="statement not covered" >            if ($scope.same == true){</span>
+<span class="cstat-no" title="statement not covered" >                $scope.same = false;</span>
+<span class="cstat-no" title="statement not covered" >                defaultIt($scope.shippingAddr);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            getAddress(postcode, $scope.billingAddr);</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $scope.getShippingAddr = <span class="fstat-no" title="function not covered" >function(postcode){</span></span>
+<span class="cstat-no" title="statement not covered" >            $scope.same = false;</span>
+<span class="cstat-no" title="statement not covered" >            defaultIt($scope.shippingAddr);</span>
+<span class="cstat-no" title="statement not covered" >            getAddress(postcode, $scope.shippingAddr);</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $scope.getUserDetails = <span class="fstat-no" title="function not covered" >function(){</span></span>
+<span class="cstat-no" title="statement not covered" >            var userData = {</span>
+                email: $scope.email,
+                billingAddr: $scope.billingAddr,
+                shippingAddr: $scope.shippingAddr || $scope.billingAddr
+            };
+<span class="cstat-no" title="statement not covered" >            userManagement.saveUser(userData);</span>
+        }
+&nbsp;
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon May 16 2016 10:16:41 GMT+0100 (BST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

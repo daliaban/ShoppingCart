@@ -1,0 +1,83 @@
+<div id="checkout">
+    <div class="row">
+        <div class="col-sm-6">
+            <h4 class="text-primary">Bill To:</h4>
+            <h6>{{user.billingAddr.name}}</h6>
+            <h6>{{user.billingAddr.house}} {{user.billingAddr.street}}</h6>
+            <h6 ng-show="user.billingAddr.city">{{user.billingAddr.city}}</h6>
+            <h6 ng-show="user.billingAddr.state">{{user.billingAddr.state}}</h6>
+            <h6 ng-show="user.billingAddr.county">{{user.billingAddr.county}}</h6>
+            <h6 ng-show="user.billingAddr.postcode">{{user.billingAddr.postcode}}</h6>
+            <h6 ng-show="user.billingAddr.country">{{user.billingAddr.country}}</h6>
+            <button ui-sref="checkout.details({referer: 'billing'})" class="btn btn-warning">Edit Address</button>
+        </div>
+        <div class="col-sm-6">
+            <h4 class="text-primary">Ship To:</h4>
+            <h6>{{user.shippingAddr.name}}</h6>
+            <h6 >{{user.shippingAddr.house}} {{user.shippingAddr.street}}</h6>
+            <h6 ng-show="user.shippingAddr.city">{{user.shippingAddr.city}}</h6>
+            <h6 ng-show="user.shippingAddr.state">{{user.shippingAddr.state}}</h6>
+            <h6 ng-show="user.shippingAddr.county">{{user.shippingAddr.county}}</h6>
+            <h6 ng-show="user.shippingAddr.postcode">{{user.shippingAddr.postcode}}</h6>
+            <h6 ng-show="user.shippingAddr.country">{{user.shippingAddr.country}}</h6>
+            <button ui-sref="checkout.details({referer: 'shipping'})" class="btn btn-warning">Edit Address</button>
+        </div>
+    </div>
+    <div id="payment">
+        <h4>Chose From Payment Options</h4>
+        <div class="row">
+            <div class="col-sm-4">
+                <ul class="nav nav-tabs nav-stacked nav-pills" role="tablist">
+                    <li ng-class="{'active': view_tab == 'tab1'}"><a ng-click="changeTab('tab1')"  href="">Credit / Debit Card</a></li>
+                    <li ng-class="{'active': view_tab == 'tab2'}"><a ng-click="changeTab('tab2')"  href="">Paypal</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-8">
+                <div class="tab-content">
+                    <div ng-show="view_tab == 'tab1'">
+                        <form name="Card">
+                            <div class="form-group">
+                                <label for="typeC">Type Of Card *</label>
+                                <select id="typeC" class="form-control">
+                                    <option>Visa</option>
+                                    <option>Visa Debit</option>
+                                    <option>MasterCard</option>
+                                    <option>American Express</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="cNumber">16 Digit Card Number *</label>
+                                <input id="cNumber" name="cNumber" class="form-control" ng-model="cNumber" ng-pattern="/^\d{16}$/" required>
+                                <span class="error" ng-show="Card.cNumber.$error.pattern">Invalid Card Number</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="expiry">Expiry *</label>
+                                <input id="expiry" class="form-control" placeholder="mm/yyyy" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV *</label>
+                                <input id="cvv" name="cvv" class="form-control" ng-model="cvv" ng-pattern="/^\d{3}$/" required>
+                                <span class="error" ng-show="Card.cvv.$error.pattern">Invalid CVV Number</span>
+                            </div>
+                            <button type="submit" ng-disabled="!Card.$valid" class="btn btn-danger" ui-sref="thankyou">Pay</button>
+                        </form>
+                    </div>
+                    <div ng-show="view_tab == 'tab2'">
+                        <form name="paypal">
+                            <h4>Log In To Your Paypal Account</h4>
+                            <div class="form-group">
+                                <label for="id">UserId *</label>
+                                <input id="id" class="form-control" ng-model="paypalUid" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password *</label>
+                                <input id="password" type="password" ng-model="paypalPasswd" class="form-control" required>
+                            </div>
+                            <button type="submit" ng-disabled="!paypal.$valid" class="btn btn-danger" ui-sref="thankyou">Pay</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

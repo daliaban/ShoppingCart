@@ -1,0 +1,17 @@
+<div>
+    <div class="row">
+        <div class="col-xs-9" ui-view></div>
+        <div class="col-xs-3">
+            <div class="totalwidget">
+                <h3>Your Order</h3>
+                <ul class="list-unstyled">
+                    <li ng-repeat="(name, item) in datalist">
+                        {{name}} x {{item.quantity}}: <b>£{{item.price | number:2}}</b>
+                    </li>
+                </ul>
+                <h4>Total To Pay: <span class="text-danger">£{{totalToPay}}</span></h4>
+                <a href="#/main"><< Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+</div>
