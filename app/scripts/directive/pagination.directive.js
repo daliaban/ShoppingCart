@@ -8,18 +8,20 @@ angular.module('shoppingCart')
 
         return {
             templateUrl: 'view/partials/paging.html',
+            scope: {
+                datalist: "=",
+                pagingOptions: "="
+            },
             controller: function ($scope) {
-                $scope.curPage = 0;
-                $scope.pageSize = 5;
-                $scope.totalPages = Math.ceil($scope.datalist.length/$scope.pageSize);
-                $scope.datalist.paged = $scope.datalist.slice(0,$scope.pageSize);
+                $scope.datalist.paged = $scope.datalist.slice(0,$scope.pagingOptions.pageSize);
+                $scope.pagingOptions.totalPages = Math.ceil($scope.datalist.length/$scope.pagingOptions.pageSize);
 
                 $scope.changePage = function(thisPage){
                     $scope.datalist.paged = [];
-                    $scope.curPage = thisPage;
-                    var startFrom = thisPage*$scope.pageSize;
+                    $scope.pagingOptions.curPage = thisPage;
+                    var startFrom = thisPage*$scope.pagingOptions.pageSize;
 
-                    for(var i=0; i<$scope.pageSize; i++){
+                    for(var i=0; i<$scope.pagingOptions.pageSize; i++){
                         $scope.datalist.paged[i] =  $scope.datalist[startFrom+i];
                     }
                 }

@@ -11,6 +11,7 @@ describe('directive: pagination', function(){
     var scope, direlement, element;
     beforeEach(inject(function($compile, $rootScope){
         scope = $rootScope.$new();
+        scope.pagingOptions = {curPage: 0, pageSize: 5, totalPages:0 };
         scope.datalist = [
             {name: 'Apple', price: 3.00},
             {name: 'Banana', price: 2.00},
@@ -33,7 +34,7 @@ describe('directive: pagination', function(){
             {name: 'Pineapple', price: 1.50},
             {name: 'Oranges', price: 2.90}
         ];
-        direlement = angular.element('<div dir-paginate></div>');
+        direlement = angular.element('<div dir-paginate datalist="datalist" paging-options="pagingOptions"></div>');
         element = $compile(direlement)(scope);
         scope.$digest();
     }));
@@ -44,12 +45,13 @@ describe('directive: pagination', function(){
     });
 
     it('should paginate elements', function(){
-        expect(scope.datalist.paged).toEqual(scope.datalist.slice(scope.curPage,scope.pageSize));
+        expect(scope.datalist.paged).toEqual(scope.datalist.slice(scope.pagingOptions.curPage,scope.pagingOptions.pageSize));
     });
 
     it('should change page', function(){
-        scope.changePage(1);
-        var start = scope.curPage * scope.pageSize;
-        expect(scope.datalist.paged).toEqual(scope.datalist.slice(start,start+scope.pageSize));
+        var isolateScope = element.isolateScope();
+        isolateScope.changePage(1);
+        var start = scope.pagingOptions.curPage * scope.pagingOptions.pageSize;
+        expect(scope.datalist.paged).toEqual(scope.datalist.slice(start,start+scope.pagingOptions.pageSize));
     });
 });

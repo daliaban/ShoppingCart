@@ -147,10 +147,6 @@ describe('controller:userdetailsCtrl', function() {
         ];
 
         beforeEach(inject(function($controller, $rootScope){
-            var postcode = "700009";
-            scope.getAddress(postcode,scope.shippingAddr);
-            scope.$apply();
-
             mscope = $rootScope.$new();
             modalInstance = {
                 close: jasmine.createSpy('modalInstance.close'),
@@ -178,6 +174,50 @@ describe('controller:userdetailsCtrl', function() {
             expect(modalInstance.close).toHaveBeenCalledWith(address[0]);
         });
         it('should dismiss the modal window when pressed Cancel', function(){
+            mscope.cancel();
+            expect(modalInstance.dismiss).toHaveBeenCalledWith('cancel');
+        });
+    });
+
+    describe('Modal opening test', function(){
+        var modal, scope, ctrl, modalInstance;
+        beforeEach(inject(function($controller, $rootScope) {
+            scope = $rootScope.$new();
+            ctrl = $controller('userdetailsCtrl', {
+                $scope: scope,
+                $uibModal: modal,
+                $uibModalInstance: modalInstance,
+                items: address
+
+            });
+            modalInstance = {
+                close: jasmine.createSpy('modalInstance.close'),
+                dismiss: jasmine.createSpy('modalInstance.dismiss'),
+                result: {
+                    then: jasmine.createSpy('modalInstance.result.then')
+                }
+            };
+            spyOn($uibModal, 'open').and.returnValue(modal);
+            modal = {
+                result: {
+                    then: function (confirmCallback, cancelCallback) {
+                        //Store the callbacks for later when the user clicks on the OK or Cancel button of the dialog
+                        this.confirmCallBack = confirmCallback;
+                        this.cancelCallback = cancelCallback;
+                    }
+                },
+                close: function (item) {
+                    //The user clicked OK on the modal dialog, call the stored confirm callback with the selected item
+                    this.result.confirmCallBack(item);
+                },
+                dismiss: function (type) {
+                    //The user clicked cancel on the modal dialog, call the stored cancel callback
+                    this.result.cancelCallback(type);
+                }
+            };
+        }));
+        xit('should open the modal window', function(){
+            scope.open();
             mscope.cancel();
             expect(modalInstance.dismiss).toHaveBeenCalledWith('cancel');
         });

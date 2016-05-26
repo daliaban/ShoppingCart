@@ -47,7 +47,6 @@ describe('controller:cartCtrl', function(){
     });
     it('should show the correct cart value', inject(function(cart){
         total = cart.cartValue();
-        scope.$digest(); //This is needed to trigger a “digest cycle” which invokes the $watch expression
         expect(scope.totalToPay).toBe(total);
     }));
 

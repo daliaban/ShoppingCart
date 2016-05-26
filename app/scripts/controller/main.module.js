@@ -6,13 +6,12 @@
 angular.module('shoppingCart')
     .controller('mainCtrl', function($scope,$state,cart,data){
         $scope.datalist = data.getData();
+        $scope.cartLength = cart.cartLength();
 
         $scope.addToCart = function(){
             cart.addToCart(this.item);
+            $scope.cartLength = cart.cartLength();
         };
 
-        $scope.$watch(function(){
-            $scope.cartLength = cart.cartLength();
-        });
-
+        $scope.pagingOptions = {curPage: 0, pageSize: 5, totalPages:0 };
 });

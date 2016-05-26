@@ -1,7 +1,7 @@
 <div>
     <div class="row">
         <div class="col-xs-6">
-            <h4>List of items</h4>
+            <h4>List Of Items</h4>
         </div>
         <div class="col-xs-6">
             <a href="#/cart" class="pull-right">Cart ({{cartLength}})</a>
@@ -9,13 +9,18 @@
     </div>
 
       <table class="table">
-        <th>#</th><th>Item</th><th>Price</th><th>Action</th>
-        <tr ng-repeat="item in datalist.paged">
-            <td>{{(curPage*pageSize) + $index +1}}</td><td>{{item.name}}</td><td>£{{item.price | number:2}}</td><td><button class="btn btn-primary" ng-click="addToCart()">Add To Cart</button></td>
-        </tr>
+          <thead>
+              <th>#</th><th>Item</th><th>Price</th><th>Action</th>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in datalist.paged">
+              <td>{{(pagingOptions.curPage*pagingOptions.pageSize) + $index +1}}</td><td>{{item.name}}</td><td>£{{item.price | number:2}}</td><td><button class="btn btn-primary" ng-click="addToCart()">Add To Cart</button></td>
+            </tr>
+          </tbody>
+
     </table>
     <div>
-        <div dir-paginate></div>
+        <div ng-show="datalist.length" dir-paginate datalist="datalist" paging-options="pagingOptions"></div>
         <button class="btn btn-success" ui-sref="cart">Proceed To Checkout</button>
     </div>
 </div>

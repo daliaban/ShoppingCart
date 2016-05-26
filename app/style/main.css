@@ -43,6 +43,7 @@ html, body {
 .totalwidget {
     border: solid;
     text-align: center;
+    overflow: auto;
 }
 
 .totalwidget button {
@@ -100,4 +101,8 @@ input.quantity {
 #feedbackForm {
     margin-right: 30px;
     margin-left: 10px;
+}
+
+#cartTable {
+  overflow: auto;
 }
