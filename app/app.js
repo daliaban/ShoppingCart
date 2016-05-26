@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('shoppingCart', ['ui.router','ngCookies', 'ui.bootstrap'])
+angular.module('shoppingCart', ['ui.router', 'ui.bootstrap', 'ngStorage'])
     .config(function($stateProvider, $urlRouterProvider, dataProvider, dataGenProvider){
         $urlRouterProvider.otherwise('/main');
 

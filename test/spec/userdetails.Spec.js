@@ -8,6 +8,13 @@ describe('controller:userdetailsCtrl', function() {
 
     beforeEach(module('shoppingCart'));
     var scope, controller, q;
+
+    var mockedLocalStorage = {};
+
+    beforeEach(module(function($provide){
+        $provide.value("$localStorage", mockedLocalStorage);
+    }));
+
     var address = [{"address_components" : [{"long_name" : "SW14 8PY","types" : [ "postal_code" ]},
         {"long_name" : "Ashleigh Road","types" : [ "route" ]},{"long_name" : "London","types" : [ "locality", "political" ]},
         {"long_name" : "London","types" : [ "postal_town" ]}, {"long_name" : "Greater London","types" : [ "administrative_area_level_2", "political" ]},
@@ -77,8 +84,8 @@ describe('controller:userdetailsCtrl', function() {
     });
 
     describe('User Management test', function(){
-        //These three tests should be run sequentially to manage the cookie store - first: nothing stored, second: store it and third: get the stored value
-        it('should not find any user details in cookie', inject(function(userManagement){
+        //These three tests should be run sequentially to manage the local storage - first: nothing stored, second: store it and third: get the stored value
+        it('should not find any user details in local storage', inject(function(userManagement){
             var user = userManagement.getUser();
             expect(user).toEqual(undefined);
             expect(scope.billingAddr).toEqual({
@@ -95,7 +102,7 @@ describe('controller:userdetailsCtrl', function() {
             });
         }));
 
-        it('should save user details in cookie', inject(function(userManagement){
+        it('should save user details in local storage', inject(function(userManagement){
             scope.email = 'a@gmail.com';
             scope.billingAddr = {};
             scope.shippingAddr = {};
@@ -106,7 +113,7 @@ describe('controller:userdetailsCtrl', function() {
             expect(user.shippingAddr).toEqual(scope.shippingAddr);
         }));
 
-        it('should get user details from cookie and set in scope', inject(function(userManagement){
+        it('should get user details from local storage and set in scope', inject(function(userManagement){
             var user = userManagement.getUser();
             expect(user.email).toEqual(scope.email);
             expect(user.billingAddr).toEqual(scope.billingAddr);

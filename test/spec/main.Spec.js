@@ -8,6 +8,11 @@ describe('controller:mainCtrl', function() {
     beforeEach(module('shoppingCart'));
 
     var scope, controller;
+    var mockedLocalStorage = {};
+
+    beforeEach(module(function($provide){
+        $provide.value("$localStorage", mockedLocalStorage);
+    }));
 
     beforeEach(inject(function ($controller, $rootScope) {
         scope = $rootScope.$new();
@@ -22,7 +27,7 @@ describe('controller:mainCtrl', function() {
 
     it('should add item to cart and increase cart length', inject(function(cart){
         cart.setCart();
-        scope.$digest(); //This is needed to trigger a “digest cycle” which invokes the $watch expression
+
         var len = scope.cartLength;
 
         scope.item = {'name': 'Apple', 'price': 3.00};
@@ -49,6 +54,7 @@ describe('controller:mainCtrl', function() {
         scope.$digest();
         expect(scope.cartLength).toBe(len+3);
 
+        cart.clearCart();
     }));
 
 });

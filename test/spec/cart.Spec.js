@@ -12,6 +12,12 @@ describe('controller:cartCtrl', function(){
     var item = {name: 'Apple', price: 3.00};
     var userData = {'email': 'a@gmail.com', billingAddr: {}, shippingAddr:{}};
 
+    var mockedLocalStorage = {};
+
+    beforeEach(module(function($provide){
+        $provide.value("$localStorage", mockedLocalStorage);
+    }));
+
     beforeEach(inject(function($controller, $rootScope, cart){
         scope = $rootScope.$new();
         cart.setCart();

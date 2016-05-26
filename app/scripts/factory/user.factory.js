@@ -4,16 +4,16 @@
 'use strict';
 
 angular.module('shoppingCart')
-    .factory('userManagement', function(shopCookies){
+    .factory('userManagement', function(shopStorage){
         return {
             saveUser: function(user){
-                shopCookies.setCookieData('user', user);
+                shopStorage.setData('user', user);
             },
             getUser: function(){
-                return shopCookies.getCookieData('user')
+                return shopStorage.getData('user')
             },
             clearUser: function(){
-                shopCookies.clearCookieData('user');
+                shopStorage.removeData('user');
             }
         }
 

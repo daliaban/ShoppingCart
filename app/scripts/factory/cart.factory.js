@@ -4,11 +4,11 @@
 'use strict';
 
 angular.module('shoppingCart')
-    .factory('cart', function(shopCookies){
+    .factory('cart', function(shopStorage){
 
         return {
                 setCart: function () {
-                    var cartval = shopCookies.getCookieData('cart');
+                    var cartval = shopStorage.getData('cart');
                     this.cart = cartval || {};
                 },
                 getCart: function () {
@@ -26,7 +26,7 @@ angular.module('shoppingCart')
                         entity['unitprice'] = item.price;
                         cart[item.name] = entity;
                     }
-                    shopCookies.setCookieData('cart', cart);
+                    shopStorage.setData('cart', cart);
                 },
                 cartLength: function () {
                     var cart = this.cart;
@@ -42,12 +42,12 @@ angular.module('shoppingCart')
                         cart[name].quantity = quantity;
                         cart[name].price = (cart[name].unitprice * parseInt(quantity));
                     }
-                    shopCookies.setCookieData('cart', cart);
+                    shopStorage.setData('cart', cart);
                 },
                 removeFromCart: function (item) {
                     var cart = this.cart;
                     delete cart[item];
-                    shopCookies.setCookieData('cart', cart);
+                    shopStorage.setData('cart', cart);
                 },
                 cartValue: function () {
                     var cart = this.cart;
@@ -59,7 +59,7 @@ angular.module('shoppingCart')
                 },
                 clearCart: function(){
                     this.cart = {};
-                    shopCookies.clearCookieData('cart');
+                    shopStorage.removeData('cart');
                 }
             };
 });

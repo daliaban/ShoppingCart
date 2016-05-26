@@ -19,7 +19,7 @@ module.exports = function(config) {
       'app/bower_components/angular-mocks/angular-mocks.js',
       'app/bower_components/angular-bootstrap/ui-bootstrap.min.js',
       'app/bower_components/angular-ui-router/release/angular-ui-router.js',
-      'app/bower_components/angular-cookies/angular-cookies.js',
+      'app/bower_components/ngstorage/ngStorage.min.js',
       'app/app.js',
       'app/scripts/**/*.js',
       'test/preload-template.js',

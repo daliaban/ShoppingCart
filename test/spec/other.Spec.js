@@ -8,6 +8,12 @@ describe('controller:misc', function() {
 
     beforeEach(module('shoppingCart'));
 
+    var mockedLocalStorage = {};
+
+    beforeEach(module(function($provide){
+        $provide.value("$localStorage", mockedLocalStorage);
+    }));
+
     describe('controller:thankyou', function(){
         var scope, item, controller, cartItem;
         beforeEach(inject(function($rootScope, $controller, cart){

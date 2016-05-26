@@ -4,17 +4,17 @@
 'use strict';
 
 angular.module('shoppingCart')
-    .factory('stateManagement', function(shopCookies){
+    .factory('stateManagement', function(shopStorage){
 
         return {
             setStateParams: function(params){
-                shopCookies.setCookieData('stateParams', params);
+                shopStorage.setData('stateParams', params);
             },
             getStateParams: function(){
-                return shopCookies.getCookieData('stateParams');
+                return shopStorage.getData('stateParams');
             },
             clearStateParams: function(){
-                shopCookies.clearCookieData('stateParams');
+                shopStorage.removeData('stateParams');
             }
         }
 
