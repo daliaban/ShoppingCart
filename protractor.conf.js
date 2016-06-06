@@ -4,7 +4,7 @@
 
 exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['spec/cartCtrl_spec.js'],
+    specs: ['spec/userCtrl_spec.js'],
     capabilities: {
         'browserName': 'chrome'
     },

@@ -14,7 +14,7 @@
           </thead>
           <tbody>
             <tr ng-repeat="item in datalist.paged">
-              <td>{{(pagingOptions.curPage*pagingOptions.pageSize) + $index +1}}</td><td>{{item.name}}</td><td>£{{item.price | number:2}}</td><td><button class="btn btn-primary" ng-click="addToCart()">Add To Cart</button></td>
+              <td>{{(pagingOptions.curPage*pagingOptions.pageSize) + $index +1}}</td><td>{{item.name}}</td><td>{{item.price | currency: "£"}}</td><td><button class="btn btn-primary" ng-click="addToCart()">Add To Cart</button></td>
             </tr>
           </tbody>
 

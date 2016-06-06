@@ -5,7 +5,7 @@
 var cartPage = function(){
     this.navigate = function(){
         browser.get('#/cart');
-    }
+    };
 };
 
 module.exports = new cartPage();

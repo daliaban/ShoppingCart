@@ -11,7 +11,7 @@
                         <td>{{$index+1}}</td><td>{{name}}</td><td><input name="qupdate" ng-model="item.quantity" class="quantity" ng-pattern="/^\d*$/">&nbsp;
                         <button class="btn btn-warning" ng-disabled="this.item.quantity == NaN" ng-click="updateQuantity()">Update</button>
                         <span class="error" ng-show="this.item.quantity == NaN"><h6>Quantity Should Be Integer</h6></span></td>
-                        <td>£{{item.unitprice | number:2}}</td><td>£{{item.price | number:2}}</td><td><button class="btn btn-primary" ng-click="removeFromCart()">Remove From Cart</button></td>
+                        <td>{{item.unitprice | currency: "£" }}</td><td>{{item.price | currency : "£" }}</td><td><button class="btn btn-primary" ng-click="removeFromCart()">Remove From Cart</button></td>
                     </tr>
                </tbody>
            </table>
@@ -19,7 +19,7 @@
        <div class="col-xs-3">
            <div class="totalwidget">
                <h3>Total To Pay</h3>
-               <span><h4 class="text-danger">£{{totalToPay}}</h4></span>
+               <span><h4 class="text-danger">{{totalToPay | currency: "£"}}</h4></span>
                <button class="btn btn-success" ui-sref="{{checkUserDetails()}}">Proceed To Payment</button>
            </div>
        </div>
