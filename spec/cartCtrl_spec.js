@@ -7,6 +7,9 @@ describe('Cart Page', function(){
     var mainPage = require('./pages/main_page.js');
     var cartPage = require('./pages/cart_page.js');
 
+    afterEach(function(){
+        browser.executeScript('window.localStorage.clear();');
+    });
 
     it('should show empty cart message', function(){
         cartPage.navigate();
@@ -19,7 +22,7 @@ describe('Cart Page', function(){
         cartPage.navigate();
 
         expect(element.all(by.repeater('(name, item) in datalist')).count()).toEqual(1);
-        browser.executeScript('window.localStorage.clear();');
+        //browser.executeScript('window.localStorage.clear();');
     });
     it('should show correct Total To Pay', function(){
         var elements, firstrow, secondrow, firstelm, secondelm;
@@ -41,7 +44,7 @@ describe('Cart Page', function(){
         expect(firstelm).toMatch('£3.00');
         expect(secondelm).toMatch('£2.00');
         expect(element(by.binding('totalToPay')).getText()).toBe('£5.00');
-        browser.executeScript('window.localStorage.clear();');
+        //browser.executeScript('window.localStorage.clear();');
     });
 
     it('should update item quantity', function(){
@@ -85,7 +88,7 @@ describe('Cart Page', function(){
         mainPage.navigate();
         mainPage.addToCart(0);
         cartPage.navigate();
-        element(by.tagName('a')).click();
+        element(by.linkText('<< Continue Shopping')).click();
         expect(browser.getCurrentUrl()).toEqual('http://0.0.0.0:9000/#/main');
     });
     it('should proceed to user details screen', function(){

@@ -71,7 +71,7 @@
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <input id="postcode" class="form-control" name="postcode" ng-model="billingAddr.postcode" ng-pattern="/^[A-Za-z0-9\s]*$/" required>
-                                <button id="bLookup" ng-disabled="!pDetails.postcode.$valid" ng-click="getAddress(this.billingAddr.postcode, this.billingAddr)" class="btn btn-info">Look Up</button>
+                                <button ng-disabled="!pDetails.postcode.$valid" ng-click="getAddress(this.billingAddr.postcode, this.billingAddr)" class="btn btn-info">Look Up</button>
                                 <span class="error" ng-show="pDetails.postcode.$error.pattern">Invalid Post Code</span>
                             </div>
                         </div>
@@ -142,7 +142,7 @@
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <input id="postcodeS" class="form-control" name="postcodeS" ng-model="shippingAddr.postcode" ng-pattern="/^[A-Za-z0-9\s]*$/" required>
-                                <button id="sLookup" ng-disabled="!pDetails.postcodeS.$valid" ng-click="getAddress(this.shippingAddr.postcode, this.shippingAddr)"  class="btn btn-info">Look Up</button>
+                                <button ng-disabled="!pDetails.postcodeS.$valid" ng-click="getAddress(this.shippingAddr.postcode, this.shippingAddr)"  class="btn btn-info">Look Up</button>
                                 <span class="error" ng-show="pDetails.postcodeS.$error.pattern">Invalid Post Code</span>
                             </div>
                         </div>

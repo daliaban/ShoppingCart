@@ -30,10 +30,32 @@ var userPage = function(){
     };
 
     this.submitBtn = element(by.className('btn-success'));
+    this.cancelBtn = element(by.css('button.btn-default'));
 
-    this.billingLookup = element(by.id('bLookup'));
+    var lookupBtns = element.all(by.tagName('button.btn-info'));
 
-    this.shippingLookup = element(by.id('sLookup'));
+    this.billingLookup = lookupBtns.get(0);
+    this.shippingLookup = lookupBtns.get(1);
+
+    this.legends = element.all(by.tagName('legend'));
+    this.personalDetails = this.legends.get(0);
+    this.billingDetails = this.legends.get(1);
+    this.shippingDetails = this.legends.get(2);
+
+    this.billinghouse = element(by.model('billingAddr.house'));
+    this.shippinghouse = element(by.model('shippingAddr.house'));
+
+    this.billingname = element(by.model('billingAddr.name'));
+    this.shippingname = element(by.model('shippingAddr.name'));
+
+    this.billingstreet = element(by.model('billingAddr.street'));
+    this.billingcity = element(by.model('billingAddr.city'));
+    this.billingcounty = element(by.model('billingAddr.county'));
+    this.billingcountry = element(by.model('billingAddr.country'));
+
+    this.shippingcity = element(by.model('shippingAddr.city'));
+    this.shippingcounty = element(by.model('shippingAddr.county'));
+    this.shippingcountry = element(by.model('shippingAddr.country'));
 
 };
 

@@ -12,3 +12,7 @@ npm install
 2. Run application
 
 grunt serve
+
+View Unit Test coverage report - coverage/index.html
+
+View Protractor Test report - protractor_output/htmlReport.html

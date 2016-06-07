@@ -9,6 +9,9 @@ describe('User Page', function() {
     beforeEach(function(){
         userPage.navigate();
     });
+    afterEach(function(){
+        browser.executeScript('window.localStorage.clear();');
+    });
 
     it('should have disabled Submit button', function(){
         expect(userPage.submitBtn.isEnabled()).toBe(false);
@@ -23,9 +26,9 @@ describe('User Page', function() {
     it('should copy billing address to shipping address', function(){
         userPage.fillbilling();
         userPage.samebilling();
-
-        expect(element(by.model('shippingAddr.house')).getAttribute('value')).toEqual(element(by.model('billingAddr.house')).getAttribute('value'));
-        expect(element(by.model('shippingAddr.name')).getAttribute('value')).toEqual(element(by.model('billingAddr.name')).getAttribute('value'));
+        //https://github.com/angular/protractor/issues/323 -GetText() not working on input elements
+        expect(userPage.shippinghouse.getAttribute('value')).toEqual(userPage.billinghouse.getAttribute('value'));
+        expect(userPage.shippingname.getAttribute('value')).toEqual(userPage.billingname.getAttribute('value'));
     });
 
     it('should clear shipping address when checkbox is not ticked', function(){
@@ -33,8 +36,8 @@ describe('User Page', function() {
         userPage.samebilling(); //To check
         userPage.samebilling(); //To uncheck
 
-        expect(element(by.model('shippingAddr.house')).getAttribute('value')).toEqual('');
-        expect(element(by.model('shippingAddr.name')).getAttribute('value')).toEqual('');
+        expect(userPage.shippinghouse.getAttribute('value')).toEqual('');
+        expect(userPage.shippingname.getAttribute('value')).toEqual('');
     });
 
     it('Look Up should fill in address', function(){
@@ -42,10 +45,10 @@ describe('User Page', function() {
         userPage.billingLookup.click();
         //browser.pause();
 
-        expect(element(by.model('billingAddr.street')).getAttribute('value')).toEqual('Ashleigh Road');
-        expect(element(by.model('billingAddr.city')).getAttribute('value')).toEqual('London');
-        expect(element(by.model('billingAddr.county')).getAttribute('value')).toEqual('Greater London');
-        expect(element(by.model('billingAddr.country')).getAttribute('value')).toEqual('United Kingdom');
+        expect(userPage.billingstreet.getAttribute('value')).toEqual('Ashleigh Road');
+        expect(userPage.billingcity.getAttribute('value')).toEqual('London');
+        expect(userPage.billingcounty.getAttribute('value')).toEqual('Greater London');
+        expect(userPage.billingcountry.getAttribute('value')).toEqual('United Kingdom');
 
     });
 
@@ -56,9 +59,9 @@ describe('User Page', function() {
         element(by.id('2')).click();
         element(by.css('button.btn-warning')).click();
 
-        expect(element(by.model('shippingAddr.city')).isDisplayed()).toBeFalsy();
-        expect(element(by.model('shippingAddr.county')).isDisplayed()).toBeFalsy('');
-        expect(element(by.model('shippingAddr.country')).isDisplayed()).toBeFalsy('');
+        expect(userPage.shippingcity.isDisplayed()).toBeFalsy();
+        expect(userPage.shippingcounty.isDisplayed()).toBeFalsy('');
+        expect(userPage.shippingcountry.isDisplayed()).toBeFalsy('');
 
     });
 
@@ -69,19 +72,19 @@ describe('User Page', function() {
         element(by.id('2')).click();
         element(by.css('button.btn-primary')).click();
 
-        expect(element(by.model('shippingAddr.city')).getAttribute('value')).toEqual('Calcutta');
-        expect(element(by.model('shippingAddr.county')).getAttribute('value')).toEqual('Calcutta');
-        expect(element(by.model('shippingAddr.country')).getAttribute('value')).toEqual('India');
+        expect(userPage.shippingcity.getAttribute('value')).toEqual('Calcutta');
+        expect(userPage.shippingcounty.getAttribute('value')).toEqual('Calcutta');
+        expect(userPage.shippingcountry.getAttribute('value')).toEqual('India');
 
     });
 
     it('Should be able to cancel user details page', function(){
-        element(by.css('button.btn-default')).click();
+        userPage.cancelBtn.click();
         expect(browser.getCurrentUrl()).toEqual('http://0.0.0.0:9000/#/cart');
     });
 
     it('should be able to continue shopping', function(){
-        element(by.tagName('div.totalwidget a')).click();
+        element(by.linkText('<< Continue Shopping')).click();
         expect(browser.getCurrentUrl()).toEqual('http://0.0.0.0:9000/#/main');
     });
 
