@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('shoppingCart', ['ui.router', 'ui.bootstrap', 'ngStorage'])
-    .config(function($stateProvider, $urlRouterProvider, dataProvider, dataGenProvider){
+    .config(function($stateProvider, $urlRouterProvider, dataProvider) {
         $urlRouterProvider.otherwise('/main');
 
         $stateProvider.state('main', {
@@ -40,8 +40,8 @@ angular.module('shoppingCart', ['ui.router', 'ui.bootstrap', 'ngStorage'])
             controller: 'thankyouCtrl'
         });
 
-        var data = dataGenProvider.generateData();
-        dataProvider.setData(data);
+        //var data = get data from backend;
+        //dataProvider.setData(data);
 
 }).run(function(cart){
         cart.setCart();
